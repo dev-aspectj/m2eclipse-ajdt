@@ -105,10 +105,12 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
 
     IJavaProject javaProject = JavaCore.create(project);
     List<IClasspathEntry> sources = getSources(javaProject.getRawClasspath());
-    assertEquals(sources.toString(), 3, sources.size());
+    assertEquals(sources.toString(), 5, sources.size());
     assertEquals(project.getFolder("src/main/java").getFullPath(), sources.get(0).getPath());
-    assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(1).getPath());
-    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(2).getPath());
+    assertEquals(project.getFolder("src/main/resources").getFullPath(), sources.get(1).getPath());
+    assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(2).getPath());
+    assertEquals(project.getFolder("src/test/resources").getFullPath(), sources.get(3).getPath());
+    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(4).getPath());
 
     String[] aspectPath = AspectJCorePreferences.getResolvedProjectAspectPath(project);
     assertEquals("The result of getResolvedProjectAspectPath is always an array of length 3", 3, aspectPath.length);
@@ -135,10 +137,12 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
 
     IJavaProject javaProject = JavaCore.create(project);
     List<IClasspathEntry> sources = getSources(javaProject.getRawClasspath());
-    assertEquals(sources.toString(), 3, sources.size());
+    assertEquals(sources.toString(), 5, sources.size());
     assertEquals(project.getFolder("src/main/java").getFullPath(), sources.get(0).getPath());
-    assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(1).getPath());
-    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(2).getPath());
+    assertEquals(project.getFolder("src/main/resources").getFullPath(), sources.get(1).getPath());
+    assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(2).getPath());
+    assertEquals(project.getFolder("src/test/resources").getFullPath(), sources.get(3).getPath());
+    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(4).getPath());
 
     String[] aspectPath = AspectJCorePreferences.getResolvedProjectAspectPath(project);
     assertEquals("The result of getResolvedProjectAspectPath is always an array of length 3", 3, aspectPath.length);
@@ -166,10 +170,12 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
     IJavaProject javaProject = JavaCore.create(project);
     List<IClasspathEntry> sources = getSources(javaProject.getRawClasspath());
 
-    assertEquals(sources.toString(), 3, sources.size());
+    assertEquals(sources.toString(), 5, sources.size());
     assertEquals(project.getFolder("src/main/java").getFullPath(), sources.get(0).getPath());
-    assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(1).getPath());
-    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(2).getPath());
+    assertEquals(project.getFolder("src/main/resources").getFullPath(), sources.get(1).getPath());
+    assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(2).getPath());
+    assertEquals(project.getFolder("src/test/resources").getFullPath(), sources.get(3).getPath());
+    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(4).getPath());
 
     // Test folder not supported (?)
     //assertEquals(project.getFolder("src/test/aspect").getFullPath(), sources.get(3).getPath());
