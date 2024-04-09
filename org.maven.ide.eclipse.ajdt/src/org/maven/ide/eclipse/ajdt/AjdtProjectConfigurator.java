@@ -131,7 +131,7 @@ public class AjdtProjectConfigurator extends AbstractProjectConfigurator impleme
     }
     IPath[] paths = new IPath[values.length];
     for(int i = 0; i < values.length; i++ ) {
-      if(values[i] != null && !"".equals(values[i].trim())) {
+      if(values[i] != null && !values[i].trim().isEmpty()) {
         paths[i] = new Path(values[i]);
       }
     }

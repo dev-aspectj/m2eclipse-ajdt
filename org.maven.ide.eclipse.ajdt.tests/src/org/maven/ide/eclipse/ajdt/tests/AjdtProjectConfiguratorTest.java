@@ -12,7 +12,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.ajdt.core.AspectJCorePreferences;
@@ -74,7 +76,7 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
 
     MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(project, monitor);
 
-    assertTrue("Expected no AJDT nature", !project.hasNature(AspectJPlugin.ID_NATURE));
+    assertFalse("Expected no AJDT nature", project.hasNature(AspectJPlugin.ID_NATURE));
 
   }
 
@@ -87,7 +89,7 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
 
     MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(project, monitor);
 
-    assertTrue("Expected no AJDT nature", !project.hasNature(AspectJPlugin.ID_NATURE));
+    assertFalse("Expected no AJDT nature", project.hasNature(AspectJPlugin.ID_NATURE));
 
   }
 
@@ -118,7 +120,7 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
     assertEquals(
       "Should be one segment of this aspect path",
       aspectPath[0].length()-1,
-      aspectPath[0].indexOf(System.getProperty("path.separator"))
+      aspectPath[0].indexOf(File.pathSeparator)
     );
     assertTrue("Content kind should be BINARY",aspectPath[1].startsWith("2")); //$NON-NLS-1$ //$NON-NLS-2$
     assertTrue("Entry kind should be LIBRARY", aspectPath[2].startsWith("1")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -150,7 +152,7 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
     assertEquals(
       "Should be one segment of this aspect path",
       aspectPath[0].length()-1,
-      aspectPath[0].indexOf(System.getProperty("path.separator"))
+      aspectPath[0].indexOf(File.pathSeparator)
     );
     assertTrue("Content kind should be BINARY",aspectPath[1].startsWith("2")); //$NON-NLS-1$ //$NON-NLS-2$
     assertTrue("Entry kind should be LIBRARY", aspectPath[2].startsWith("1")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -181,12 +183,12 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
     //assertEquals(project.getFolder("src/test/aspect").getFullPath(), sources.get(3).getPath());
 
     // now check exclusion and inclusions
-    System.out.println("Inclusions: " + sources.get(2).getInclusionPatterns());
-    System.out.println("Exclusions: " + sources.get(2).getInclusionPatterns());
+    System.out.println("Inclusions: " + Arrays.toString(sources.get(2).getInclusionPatterns()));
+    System.out.println("Exclusions: " + Arrays.toString(sources.get(2).getInclusionPatterns()));
   }
 
   private List<IClasspathEntry> getSources(IClasspathEntry[] rawCp) {
-    ArrayList<IClasspathEntry> sources = new ArrayList<IClasspathEntry>();
+    ArrayList<IClasspathEntry> sources = new ArrayList<>();
     for (IClasspathEntry entry : rawCp) {
       if (IClasspathEntry.CPE_SOURCE == entry.getEntryKind()) {
         sources.add(entry);

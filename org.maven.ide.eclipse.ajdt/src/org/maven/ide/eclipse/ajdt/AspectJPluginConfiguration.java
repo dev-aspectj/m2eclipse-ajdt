@@ -74,7 +74,7 @@ class AspectJPluginConfiguration {
   }
 
   private Set<String> getModules(String names, String name) {
-    Set<String> result = new LinkedHashSet<String>();
+    Set<String> result = new LinkedHashSet<>();
 
     collectModules(result, ((Xpp3Dom) plugin.getConfiguration()), names, name);
 
@@ -155,23 +155,13 @@ class AspectJPluginConfiguration {
 
     if (plugin != null && plugin.getConfiguration() != null) {
       String skip = getElementValue((Xpp3Dom) plugin.getConfiguration(), "skip");
-
-      if ("true".equals(skip)) {
-          return true;
-      } else {
-          return false;
-      }
+      return "true".equals(skip);
     }
 	  return false;
   }
 
   private static boolean executionsAreEmpty(Plugin plugin) {
-
-    if(plugin != null && plugin.getExecutions() != null && !plugin.getExecutions().isEmpty()) {
-      return true;
-    }
-
-    return false;
+    return plugin != null && plugin.getExecutions() != null && !plugin.getExecutions().isEmpty();
   }
 
 }
