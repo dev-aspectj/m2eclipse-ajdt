@@ -56,7 +56,7 @@
   </scm>
 
 	<properties>
-		<tycho-version>2.7.5</tycho-version>
+		<tycho-version>4.0.7</tycho-version>
 		<!-- <m2eclipse-core.version>0.10.2.20100623-1649</m2eclipse-core.version> -->
 		<!-- <m2eclipse-core.site>0.10.2/S/${m2eclipse-core.version}</m2eclipse-core.site> -->
 		<!-- <m2e.site-compressed>https://repository.sonatype.org/service/local/repositories/forge-sites/content-compressed/</m2e.site-compressed> -->

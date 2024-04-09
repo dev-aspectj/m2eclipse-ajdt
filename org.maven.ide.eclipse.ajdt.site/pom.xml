@@ -7,7 +7,7 @@
         <relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<packaging>eclipse-update-site</packaging>
+	<packaging>eclipse-repository</packaging>
 
 	<groupId>org.maven.ide.eclipse.ajdt.site</groupId>
 	<artifactId>org.maven.ide.eclipse.ajdt.site</artifactId>
@@ -91,7 +91,7 @@
 												</fileset>
 											</delete>
 											<upload bucketName="${dist.bucket}" toDir="${dist.path}" publicRead="true">
-												<fileset dir="${project.build.directory}/site">
+												<fileset dir="${project.build.directory}/repository">
 													<include name="**/*" />
 													<include name="**" />
 													<include name="*.zip" />
