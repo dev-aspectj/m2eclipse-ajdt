@@ -47,7 +47,7 @@ import org.slf4j.LoggerFactory;
 public class AjdtProjectConfigurator extends AbstractProjectConfigurator implements IJavaProjectConfigurator {
 
   private static final String SRC_MAIN_ASPECT = "src/main/aspect";
-	
+
   private static final Logger log = LoggerFactory.getLogger(AjdtProjectConfigurator.class);
 
   private static final String GOAL_COMPILE = "compile";
@@ -66,7 +66,7 @@ public class AjdtProjectConfigurator extends AbstractProjectConfigurator impleme
   @Override
   public void configure(ProjectConfigurationRequest request, IProgressMonitor monitor) throws CoreException {
     IProject project = request.mavenProjectFacade().getProject();
-	
+
     configureNature(project, monitor);
   }
 
@@ -96,7 +96,7 @@ public class AjdtProjectConfigurator extends AbstractProjectConfigurator impleme
               AspectJCorePreferences.ASPECTPATH_ATTRIBUTE_NAME);
           continue;
         }
-       
+
         if(inpathDependencies != null && inpathDependencies.contains(key)) {
           log.info("Found inpath dependency match: {}", key);
           //descriptor.addClasspathAttribute(AspectJCorePreferences.INPATH_ATTRIBUTE);
@@ -207,30 +207,30 @@ public class AjdtProjectConfigurator extends AbstractProjectConfigurator impleme
       }
     }
   }
-  
+
   protected File[] getSourceFolders(ProjectConfigurationRequest request, MojoExecution mojoExecution, IProgressMonitor monitor)
       throws CoreException {
 
     // note: don't check for the aj nature here since this method may be called before the configure method.
     File[] sourceFolders = new File[0];
     File value = getParameterValue(request.mavenProject(), "aspectDirectory", File.class, mojoExecution, monitor);
-    
+
     if(value != null) {
       IMavenProjectFacade facade = request.mavenProjectFacade();
       IPath path = getFullPath(facade, value);
       if(value.exists()) {
-        log.info("Found aspect source folder " + path);
+        log.info("Found aspect source folder {}", path);
         sourceFolders = new File[] {value};
       } else {
-        log.warn("File " + path + " does not exist yet. Create it and re-run configuration.");
+        log.warn("File {} does not exist yet. Create it and re-run configuration.", path != null ? path : value);
       }
     } else {
-      log.info("No aspect source folder found. Failing back to 'src/main/aspect'");
+      log.info("No aspect source folder found. Falling back to '{}'", SRC_MAIN_ASPECT);
       value = new File(SRC_MAIN_ASPECT);
     }
     return sourceFolders;
   }
-  
+
   private IPath getFullPath(IMavenProjectFacade facade, File value) {
 	  return facade.getFullPath(value);
   }
