@@ -2,6 +2,7 @@
 target/
 *.releaseBackup
 release.properties
+.tycho-consumer-pom.xml
 
 # Eclipse
 .classpath
