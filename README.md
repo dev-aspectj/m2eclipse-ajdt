@@ -6,8 +6,8 @@ Without this plugin you may see warnings such as "`Plugin execution not covered 
 
 This plugin supports multiple different forked versions of `aspectj-maven-plugin`. Following `groupId` values for this plugin are recognized:
  * `dev.aspectj`
- * `com.nickwongdev`
  * `org.codehaus.mojo`
+ * `com.nickwongdev`
  * `com.github.m50d`
  * `se.haleby.aspectj`
  * `io.starter`
@@ -50,10 +50,14 @@ You can install this m2e connector to eclipse by selecting Help -> Install new s
 
 Eclipse update site URLs:
 
-| Eclipse version | Update site URL  |
-| --------------- | ---------------- |
-| 2019-06         | https://repo.t5.fi/public/eclipse/m2eclipse-ajdt/eclipse-2019-06/ |
-| 2020-12         | https://repo.t5.fi/public/eclipse/m2eclipse-ajdt/eclipse-2020-12/ |
-| 2022-12         | https://repo.t5.fi/public/eclipse/m2eclipse-ajdt/eclipse-2022-12/ |
+| Eclipse version | Update site URL                                                       |
+|-----------------|-----------------------------------------------------------------------|
+| 2024-03         | https://aspectj.dev/maven/m2eclipse-ajdt/eclipse-2024-03/             |
+| 2022-12         | https://aspectj.dev/maven/m2eclipse-ajdt/eclipse-2022-12/             |
+| 2022-12         | https://repo.t5.fi/public/eclipse/m2eclipse-ajdt/eclipse-2022-12/ (*) |
+| 2020-12         | https://repo.t5.fi/public/eclipse/m2eclipse-ajdt/eclipse-2020-12/ (*) |
+| 2019-06         | https://repo.t5.fi/public/eclipse/m2eclipse-ajdt/eclipse-2019-06/ (*) |
+   
+These update sites are provided on best-effort basis.
 
-These update sites are provided on best-effort basis but availability is generally good.
+(*) As of 2024, server is no longer available. Former maintainer 
